@@ -108,7 +108,7 @@ sudo docker push nilsdavoine/python3-minimal
    an interactive prompt inside the running container.
 
 ```
-sudo docker run -ti -v $(pwd):/shared nilsdavoine/python3-minimal
+sudo docker run -ti -v $(pwd):/root/shared nilsdavoine/python3-minimal
 ```
 
 ## Setup a simple Python test suite
@@ -119,14 +119,19 @@ sudo docker run -ti -v $(pwd):/shared nilsdavoine/python3-minimal
    repository.  ``git add``, ``git commit`` and ``git push`` them.
 
 ```
-# Add your commands here
+git add test_wallet.py
+git add wallet.py
+git commit
+git log --graph --all
+git merge origin/main
+git push
 ```
 
 2. Start a Docker container using your image and share your repository into a
    directory `/root/shared` into the container.
 
 ```
-# Add your commands here
+sudo docker run -ti -v $(pwd):/root/shared nilsdavoine/python3-minimal
 ```
 
 3. Run the tests inside the container by going to `/root/shared` and running the
@@ -145,4 +150,5 @@ sudo docker run -ti -v $(pwd):/shared nilsdavoine/python3-minimal
 
 3. Push the `.github/workflows/test.yml` file to GitHub. Check that you get the
    green tick showing that your tests pass.
+
 
