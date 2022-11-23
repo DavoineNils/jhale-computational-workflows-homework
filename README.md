@@ -82,7 +82,10 @@ RUN apt-get -y update && \
 2. `git add` and `git push` the file `Dockerfile` to the repository.
 
 ```
-# Add your commands here
+gedit Dockerfile
+git add Dockerfile
+git commit
+git push
 ```
 
 ## Build and push Docker image
@@ -92,7 +95,10 @@ RUN apt-get -y update && \
    `<yourdockerhubusername>/computational-workflows`.
 
 ```
-# Add your commands here
+sudo docker login
+sudo docker build .
+sudo docker tag effde7632056 nilsdavoine/python3-minimal
+sudo docker push nilsdavoine/python3-minimal
 ```
 
 ## Run a container, and share in files from the host.
@@ -102,7 +108,7 @@ RUN apt-get -y update && \
    an interactive prompt inside the running container.
 
 ```
-# Add your commands here
+sudo docker run -ti -v $(pwd):/shared nilsdavoine/python3-minimal
 ```
 
 ## Setup a simple Python test suite
